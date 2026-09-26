@@ -1,42 +1,48 @@
 import { useState } from 'react'
 
-function Login()
+function Login({message, setMessage})
 {
-    const [message,setMessage] = useState("");
+    
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
 
     async function handleSubmit(event)
     {
-        event.preventDefault();
-        const response = await fetch(
-            "http://localhost:9000/login",
-            {
-                method: "POST",
-                headers: 
+        try 
+        {
+            event.preventDefault();
+            const response = await fetch(
+                "http://localhost:9000/login",
                 {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(
+                    method: "POST",
+                    headers: 
                     {
-                        username,
-                        password
-                    }
-                )
-            }
-        );
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(
+                        {
+                            username,
+                            password
+                        }
+                    )
+                });
 
-        const data = await response.json();
+            const data = await response.json();
 
-        if(response.ok)
+            if(response.ok)
+                setMessage("Login sucessful");
+            
+            else
+                setMessage(data.message);
+            
+        } 
+
+        catch (error) 
         {
-            setMessage("Login sucessful");
+            
         }
-        else
-        {
-            setMessage(data.message);
-        }
+        
     }
 
     return(

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-function Signup()
+function Signup({message, setMessage})
 {
-    const [message,setMessage] = useState("");
+    
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [username, setUsername] = useState("");
@@ -10,8 +10,11 @@ function Signup()
 
     async function handleSubmit(event)
     {
-        event.preventDefault();
-        const response = await fetch(
+        
+        try 
+        {
+            event.preventDefault();
+            const response = await fetch(
             "http://localhost:9000/signup",
             {
                 method: "POST",
@@ -27,19 +30,24 @@ function Signup()
                         password
                     }
                 )
+            });
+
+            const data = await response.json();
+
+            if(response.ok)
+            {
+                setMessage("Signup sucessful");
             }
-        );
-
-        const data = await response.json();
-
-        if(response.ok)
+            else
+            {
+                setMessage(data.message);
+            }
+        } 
+        catch (error) 
         {
-            setMessage("Signup sucessful");
+            setMessage("Could not connect to the server");
         }
-        else
-        {
-            setMessage(data.message);
-        }
+        
     }
     return (
         <>

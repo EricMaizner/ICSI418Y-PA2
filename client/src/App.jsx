@@ -8,13 +8,26 @@ import './App.css'
 
 
 function App() {
-  const [username, setUsername] = useState("")
+  const [signupMessage, setSignupMessage] = useState("");
+  const [loginMessage, setLoginMessage] = useState("");
 
   return (
     <>
     <div className = "input-menu">
-      <Signup></Signup>
-      <Login></Login>
+      <Signup
+        message={signupMessage}
+        setMessage = {(msg) =>{
+          setSignupMessage(msg);
+          setLoginMessage("");
+        }}
+      />
+      <Login
+        message={loginMessage}
+        setMessage = {(msg) =>{
+          setSignupMessage("");
+          setLoginMessage(msg);
+        }}  
+      />
     </div>
     </>
   )
