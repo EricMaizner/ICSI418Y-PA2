@@ -40,7 +40,7 @@ function Login({message, setMessage})
 
         catch (error) 
         {
-            
+            setMessage("Could not connect to the server");
         }
         
     }

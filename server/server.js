@@ -39,10 +39,10 @@ app.post("/signup", async (req, res) => {
 
         await users.insertOne(
         {
-            firstName,
-            lastName,
-            username,
-            password
+            f_name: firstName,
+            l_name: lastName,
+            username: username,
+            password: password
         });
             
 

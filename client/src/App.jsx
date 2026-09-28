@@ -14,15 +14,13 @@ function App() {
   return (
     <>
     <div className = "input-menu">
-      <Signup
-        message={signupMessage}
+      <Signup message={signupMessage}
         setMessage = {(msg) =>{
           setSignupMessage(msg);
           setLoginMessage("");
         }}
       />
-      <Login
-        message={loginMessage}
+      <Login message={loginMessage}
         setMessage = {(msg) =>{
           setSignupMessage("");
           setLoginMessage(msg);
