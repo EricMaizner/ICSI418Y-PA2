@@ -1,53 +1,133 @@
-.input-menu
-{
-  display:flex;
+.input-menu {
+  display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 3rem;
   padding: 2rem;
 }
 
-
-.signup-field, .login-field
-{
+.signup-field,
+.login-field {
   min-height: 100vh;
   display: grid;
   place-content: center;
-  
 }
-.signup-form, .login-form
-{
-  position:relative;
+.signup-form,
+.login-form {
+  position: relative;
   display: flex;
   border: 2px solid grey;
   border-radius: 1rem;
   flex-direction: column;
-  
-  input
-  {
+
+  input {
     margin: 0 auto;
     width: 55%;
     max-width: 400px;
-  
   }
 
-  button
-  {
+  button {
     align-self: center;
     margin-top: 10px;
     margin-bottom: 10px;
   }
-
-
 }
-  .status-message
-{
-  position:absolute;
+.status-message {
+  position: absolute;
   bottom: 0;
   left: 0;
-  width:100%;
+  width: 100%;
   text-align: center;
-  margin:0;
+  margin: 0;
 }
 
+.projects-dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+}
 
+.project-card {
+  background-color: #1e1e1e;
+  border: 1px solid grey;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+  position: relative;
+  padding-bottom: 2.5rem;
+}
+
+.project-form,
+.add-member-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-align: left;
+}
+
+.project-form label,
+.add-member-form label,
+.project-card label {
+  font-weight: 600;
+  margin-top: 0.4rem;
+  display: block;
+}
+
+.project-form input,
+.project-form textarea,
+.project-form select,
+.project-card select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid grey;
+  background-color: #2b2b2b;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.project-form textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.project-form button,
+.add-member-form button {
+  margin-top: 0.8rem;
+  padding: 0.6rem;
+  cursor: pointer;
+}
+
+.project-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.project-table th,
+.project-table td {
+  border-bottom: 1px solid grey;
+  padding: 0.6rem 0.4rem;
+  font-size: 0.9rem;
+}
+
+.member-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.member-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid grey;
+}

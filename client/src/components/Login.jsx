@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 function Login({message, setMessage})
 {
     
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [users, setUsers] = useState([]);
 
 
     async function handleSubmit(event)

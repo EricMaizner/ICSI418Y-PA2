@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
-function Signup({message, setMessage})
+function Signup({message, setMessage, onUserCreated})
 {
     
     const [firstName, setFirstName] = useState("");
@@ -37,6 +37,8 @@ function Signup({message, setMessage})
             if(response.ok)
             {
                 setMessage("Signup sucessful");
+                if(onUserCreated)
+                    onUserCreated();
             }
             else
             {
