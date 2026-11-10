@@ -4,6 +4,7 @@ import ProjectList from './components/ProjectList';
 import ProjectMembers from './components/ProjectMembers';
 import Signup from './components/Signup';
 import Login from './components/Login';
+import ProjectBacklog from "./components/ProjectBacklog";
 import './App.css';
 
 function App()
@@ -12,6 +13,7 @@ function App()
     const [loginMessage, setLoginMessage] = useState("");
     const [users, setUsers] = useState([]);
     const [projects, setProjects] = useState([]);
+    const [membershipVersion, setMembershipVersion] = useState(0);
 
     async function fetchUsers()
     {
@@ -78,9 +80,11 @@ function App()
             <hr />
 
             <div className = "projects-dashboard">
-                <CreateProject users={users} onProjectCreated={fetchProjects} />
-                <ProjectList projects={projects} users={users} />
-                <ProjectMembers projects={projects} users={users} />
+                <CreateProject users = {users} onProjectCreated = {fetchProjects} />
+                <ProjectList projects = {projects} users = {users} />
+                <ProjectMembers projects = {projects} users = {users} onMembershipChanged={() => setMembershipVersion((v) => v + 1)} />
+                <hr/>
+                <ProjectBacklog projects = {projects} users = {users} membershipVersion = {membershipVersion} />
             </div>
         </div>
     );

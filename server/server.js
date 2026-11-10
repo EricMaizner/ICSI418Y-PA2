@@ -442,9 +442,7 @@ app.delete("/api/projects/:projectId/stories/:storyId", async (req, res) =>
             typeof rawProjectId !== "string" || !ObjectId.isValid(rawProjectId) ||
             typeof rawStoryId !== "string" || !ObjectId.isValid(rawStoryId)
         )
-        {
             return res.status(400).json({ message: "Invalid project or story identifier" });
-        }
 
         const projectId = new ObjectId(rawProjectId);
         const storyId = new ObjectId(rawStoryId);
@@ -455,9 +453,7 @@ app.delete("/api/projects/:projectId/stories/:storyId", async (req, res) =>
         });
 
         if (result.deletedCount === 0)
-        {
             return res.status(404).json({ message: "Story not found in the selected project" });
-        }
 
         res.status(200).json({ message: "User story deleted successfully" });
     }
@@ -482,7 +478,7 @@ app.put("/api/projects/:projectId/stories/:storyId", async (req, res) =>
             return res.status(400).json({ message: "Invalid project or story identifier" });
         
 
-        //Convert readable text into ObjectIds
+        //Convert raw IDs to readable text
         const projectId = new ObjectId(rawProjectId);
         const storyId = new ObjectId(rawStoryId);
 
@@ -517,25 +513,21 @@ app.put("/api/projects/:projectId/stories/:storyId", async (req, res) =>
         if (assigned_user_id !== null && assigned_user_id !== undefined && assigned_user_id !== "")
         {
             if (typeof assigned_user_id !== "string" || !ObjectId.isValid(assigned_user_id))
-            {
                 return res.status(400).json({ message: "Invalid assigned user identifier" });
-            }
+            
             assignedUserId = new ObjectId(assigned_user_id);
 
             const existingUser = await users.findOne({ _id: assignedUserId });
             if (existingUser === null)
-            {
                 return res.status(404).json({ message: "Assigned user does not exist" });
-            }
+            
 
             const membership = await memberships.findOne({
                 project_id: projectId,
                 user_id: assignedUserId
             });
             if (membership === null)
-            {
                 return res.status(400).json({ message: "Assigned user must be a current member of this project"});
-            }
         }
 
 
