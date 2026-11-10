@@ -56,26 +56,30 @@ function Signup({message, setMessage, onUserCreated})
         <div className="signup-field">   
             <h2>Sign up</h2>
             <form className = "signup-form" onSubmit={handleSubmit}>
-                <label for="signup-input-fName"> First Name </label>
+                <label htmlFor="signup-input-fName"> First Name </label>
                 <input
+                    id='signup-input-fName'
                     type = "text"
                     value={firstName}
                     onChange={(event) => setFirstName(event.target.value)}
                 />
-                <label for = "signup-input-lName"> Last Name </label>
+                <label htmlFor = "signup-input-lName"> Last Name </label>
                 <input
+                    id='signup-input-lName'
                     type = "text"
                     value={lastName}
                     onChange={(event) => setLastName(event.target.value)}
                 />
-                <label for = "signup-input-username"> Username </label>
+                <label htmlFor = "signup-input-username"> Username </label>
                 <input
+                    id='signup-input-username'
                     type = "text"
                     value={username}
                     onChange={(event) => setUsername(event.target.value)}
                 />
-                <label for = "signup-input-password"> Password </label>
+                <label htmlFor = "signup-input-password"> Password </label>
                 <input
+                    id='signup-input-password'
                     type = "password"
                     placeholder='Enter Password'
                     value={password}

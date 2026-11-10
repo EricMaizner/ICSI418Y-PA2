@@ -51,14 +51,16 @@ function Login({message, setMessage})
         <div className="login-field">   
             <h2>Login</h2>
             <form className = "login-form" onSubmit={handleSubmit}>
-                <label for = "login-input-username"> Username </label>
+                <label htmlFor = "login-input-username"> Username </label>
                 <input
+                    id='login-input-username'
                     type = "text"
                     value={username}
                     onChange={(event) => setUsername(event.target.value)}
                 />
-                <label for = "login-input-password"> Password </label>
+                <label htmlFor = "login-input-password"> Password </label>
                 <input
+                    id='login-input-password'
                     type = "password"
                     placeholder='Enter Password'
                     value={password}

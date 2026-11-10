@@ -77,15 +77,15 @@ function App()
                 />
             </div>
 
-            <hr />
+            <hr/>
 
             <div className = "projects-dashboard">
                 <CreateProject users = {users} onProjectCreated = {fetchProjects} />
                 <ProjectList projects = {projects} users = {users} />
                 <ProjectMembers projects = {projects} users = {users} onMembershipChanged={() => setMembershipVersion((v) => v + 1)} />
-                <hr/>
-                <ProjectBacklog projects = {projects} users = {users} membershipVersion = {membershipVersion} />
             </div>
+            <hr/>
+            <ProjectBacklog projects = {projects} users = {users} membershipVersion = {membershipVersion} />
         </div>
     );
 }
